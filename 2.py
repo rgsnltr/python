@@ -151,7 +151,7 @@ def get_pages_depth(url: str, depth: int) -> Generator[str, None, None]:
 pages = get_pages_depth(depth=2, url='https://en.wikipedia.org/wiki/Main_Page')
 
 for _ in range(5):
-    print(next(pages)[:100])  # 打印每个页面HTML的前100个字符
+    print(next(pages)[:100])  
 
 
 
@@ -188,14 +188,14 @@ def get_scientists_from_page(url: str, num_scientists: int = 100):
 
     rows = wikitable.find_all('tr')
 
-    selected_scientists = random.sample(rows[1:], num_scientists)  # 从第二行开始，因为第一行是表头
+    selected_scientists = random.sample(rows[1:], num_scientists)  
 
     for row in selected_scientists:
         columns = row.find_all('td')
 
         if len(columns) > 2:  
             name = columns[0].get_text(strip=True)  
-            birthdate = columns[1].get_text(strip=True) if len(columns) > 1 else "Unknown"  # 获取出生日期
+            birthdate = columns[1].get_text(strip=True) if len(columns) > 1 else "Unknown"  
             major_achievements = columns[2].get_text(strip=True) if len(columns) > 1 else "Unknown"
             alma_mater = columns[3].get_text(strip=True) if len(columns) > 1 else "Unknown"
 
